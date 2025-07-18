@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-18T14:40:38.176Z",
+    "end": "2025-07-18T14:40:45.449Z",
+    "duration": 7273,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6fc67de0-93b8-4296-8039-2b99174d7ec3",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ui\\adicionar_item_ao_carrinho.cy.js",
+      "file": "cypress\\e2e\\ui\\adicionar_item_ao_carrinho.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d290ab13-8195-45d8-a0bc-5581b0ba9611",
+          "title": "Carrinho EBAC - Page Object",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve adicionar um produto ao carrinho com sucesso",
+              "fullTitle": "Carrinho EBAC - Page Object Deve adicionar um produto ao carrinho com sucesso",
+              "timedOut": null,
+              "duration": 7233,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_CarrinhoPage.default.acessarLoja();\n_CarrinhoPage.default.selecionarProduto('Ingrid Running Jacket'); // exemplo\n_CarrinhoPage.default.selecionarTamanho();\n_CarrinhoPage.default.selecionarCor();\n_CarrinhoPage.default.selecionarQtd();\n_CarrinhoPage.default.adicionarAoCarrinho();\n_CarrinhoPage.default.verCarrinho();\n_CarrinhoPage.default.validarMensagem();",
+              "err": {},
+              "uuid": "6309a4b7-0e93-4fa9-95ca-6dea847ac700",
+              "parentUUID": "d290ab13-8195-45d8-a0bc-5581b0ba9611",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6309a4b7-0e93-4fa9-95ca-6dea847ac700"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7233,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -28,7 +28,7 @@ jobs:
         run: npm run test:web
 
       - name: Publicar resultados Allure (Web)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results-web
           path: allure-results
@@ -57,7 +57,7 @@ jobs:
         run: npm run testMobile
 
       - name: Publicar resultados Allure (Mobile)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results-mobile
           path: allure-results

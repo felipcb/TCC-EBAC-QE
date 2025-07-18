@@ -1,2 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","27711","should login with valid credentials","","Fri Jul 18 10:40:16 BRT 2025","passed","Fri Jul 18 10:40:44 BRT 2025","","E2e","",""
+"","19108","should login with valid credentials","","Fri Jul 18 11:41:14 BRT 2025","passed","Fri Jul 18 11:41:33 BRT 2025","","E2e","",""
