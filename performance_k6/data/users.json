@@ -1,0 +1,24 @@
+{
+  "usuarios": [
+    {
+      "user": "user1_ebac",
+      "pass": "psw!ebac@test"
+    },
+    {
+      "user": "user2_ebac",
+      "pass": "psw!ebac@test"
+    },
+    {
+      "user": "user3_ebac",
+      "pass": "psw!ebac@test"
+    },
+    {
+      "user": "user4_ebac",
+      "pass": "psw!ebac@test"
+    },
+    {
+      "user": "user5_ebac",
+      "pass": "psw!ebac@test"
+    }
+  ]
+}
