@@ -2,23 +2,23 @@ const path = require('path');
 
 exports.config = {
     runner: 'local',
-    hostname: '127.0.0.1',    // Host do Appium
-    port: 4723,               // Porta padrão do Appium
-    path: '/',                // Caminho padrão do Appium
+    hostname: '127.0.0.1',    
+    port: 4723,               
+    path: '/',                
 
     specs: [
         './mobile/tests/specs/**/*.js'
     ],
     exclude: [],
 
-    maxInstances: 1,          // Rodar 1 teste por vez para evitar conflitos
+    maxInstances: 1,                                    // Rodar 1 teste por vez para evitar conflitos
 
     capabilities: [{
         platformName: 'Android',
-        'appium:deviceName': 'Pixel_8a_API_34_Ebac',  // Nome exato do emulador
-        'appium:platformVersion': '14',               // Android 14 (API 34)
+        'appium:deviceName': 'Pixel_8a_API_34_Ebac',  
+        'appium:platformVersion': '14',               
         'appium:automationName': 'UiAutomator2',
-        'appium:app': path.resolve('./app/ebac.apk'), // APK do seu projeto
+        'appium:app': path.resolve('./app/ebac.apk'), 
         'appium:autoGrantPermissions': true
     }],
 
@@ -27,13 +27,28 @@ exports.config = {
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
-    services: ['appium'],
+    services: [
+        ['appium',{ command: 'appium' }]
+    ],
 
     framework: 'mocha',
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: 'allure-results',                    // pasta onde serão salvos os arquivos do Allure
+            disableWebdriverStepsReporting: true,           // desabilita steps detalhados do webdriver
+            disableWebdriverScreenshotsReporting: false,    // inclui prints automáticos em falhas
+        }],
+    ],
 
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
+    },
+
+    afterTest: async function (test, context, { error }) {
+        if (error) {
+            await browser.takeScreenshot();
+        }
     }
 };

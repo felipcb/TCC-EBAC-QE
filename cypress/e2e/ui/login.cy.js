@@ -1,3 +1,4 @@
+import '@shelex/cypress-allure-plugin';
 import LoginPage from '../../page_objects/LoginPage';
 
 describe('Login EBAC - Page Object', () => {

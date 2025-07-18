@@ -1,3 +1,4 @@
+import '@shelex/cypress-allure-plugin';
 import CarrinhoPage from '../../page_objects/CarrinhoPage';
 
 describe('Carrinho EBAC - Page Object', () => {

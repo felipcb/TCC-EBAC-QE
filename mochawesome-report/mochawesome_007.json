@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-18T13:39:49.399Z",
+    "end": "2025-07-18T13:39:58.337Z",
+    "duration": 8938,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d8324d2d-fe64-4b72-a70d-7649ec16dc4d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ui\\login.cy.js",
+      "file": "cypress\\e2e\\ui\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b4dc542a-edb2-4cfe-89bb-8cfc52ad6569",
+          "title": "Login EBAC - Page Object",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve logar com sucesso",
+              "fullTitle": "Login EBAC - Page Object Deve logar com sucesso",
+              "timedOut": null,
+              "duration": 6782,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.acessarPaginaDeLogin();\n_LoginPage.default.preencherUsuario('user1_ebac');\n_LoginPage.default.preencherSenha('psw!ebac@test');\n_LoginPage.default.clicarEmEntrar();\n_LoginPage.default.validarMensagemDeBoasVindas('Olá');",
+              "err": {},
+              "uuid": "faf8ac0e-c3a4-414d-86b6-9a1b924904a0",
+              "parentUUID": "b4dc542a-edb2-4cfe-89bb-8cfc52ad6569",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com senha inválida",
+              "fullTitle": "Login EBAC - Page Object Não deve logar com senha inválida",
+              "timedOut": null,
+              "duration": 2104,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.acessarPaginaDeLogin();\n_LoginPage.default.preencherUsuario('user1_ebac');\n_LoginPage.default.preencherSenha('senha@invalida');\n_LoginPage.default.clicarEmEntrar();\n_LoginPage.default.validarMensagemDeErro('Erro: A senha informada para o usuário user1_ebac está incorreta. Perdeu a senha?');",
+              "err": {},
+              "uuid": "43688dc2-2b4c-4d36-b273-b96bd1b8c862",
+              "parentUUID": "b4dc542a-edb2-4cfe-89bb-8cfc52ad6569",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "faf8ac0e-c3a4-414d-86b6-9a1b924904a0",
+            "43688dc2-2b4c-4d36-b273-b96bd1b8c862"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8886,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-18T13:32:17.228Z",
+    "end": "2025-07-18T13:32:18.319Z",
+    "duration": 1091,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "82417aea-ac9b-439d-a879-81e248768b52",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ui\\api\\cypress\\produtos.cy.js",
+      "file": "cypress\\e2e\\ui\\api\\cypress\\produtos.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "180fd8a3-7842-44cc-8360-6a0c18d0cd3b",
+          "title": "API - Cupons",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "CT12 – Deve listar todos os cupons (GET)",
+              "fullTitle": "API - Cupons CT12 – Deve listar todos os cupons (GET)",
+              "timedOut": null,
+              "duration": 396,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: '/wp-json/wc/v3/coupons',\n  headers: {\n    Authorization: token\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.be.an('array');\n});",
+              "err": {},
+              "uuid": "7e1dc7b3-00c7-40aa-96f5-264d9451e814",
+              "parentUUID": "180fd8a3-7842-44cc-8360-6a0c18d0cd3b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "CT13 – Deve retornar um cupom pelo ID existente (GET)",
+              "fullTitle": "API - Cupons CT13 – Deve retornar um cupom pelo ID existente (GET)",
+              "timedOut": null,
+              "duration": 287,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const id = 6190; // Substitua pelo ID real de um cupom válido\ncy.request({\n  method: 'GET',\n  url: `/wp-json/wc/v3/coupons/${id}`,\n  headers: {\n    Authorization: token\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('id', id);\n});",
+              "err": {},
+              "uuid": "d07db6ba-2cb6-4dee-9d74-304a64831a42",
+              "parentUUID": "180fd8a3-7842-44cc-8360-6a0c18d0cd3b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "CT14 – Não deve criar cupom com nome repetido (POST)",
+              "fullTitle": "API - Cupons CT14 – Não deve criar cupom com nome repetido (POST)",
+              "timedOut": null,
+              "duration": 370,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: '/wp-json/wc/v3/coupons',\n  failOnStatusCode: false,\n  // Para evitar falha no teste ao retornar erro esperado\n  headers: {\n    Authorization: token,\n    'Content-Type': 'application/json'\n  },\n  body: {\n    code: 'desconto10',\n    // Código já existente\n    amount: '10',\n    discount_type: 'percent',\n    individual_use: true\n  }\n}).then(response => {\n  expect(response.status).to.eq(400); // Ou 409 se for conflito\n  expect(response.body).to.have.property('code');\n});",
+              "err": {},
+              "uuid": "23d479fc-3ff6-4bdf-9109-19f173920f3d",
+              "parentUUID": "180fd8a3-7842-44cc-8360-6a0c18d0cd3b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7e1dc7b3-00c7-40aa-96f5-264d9451e814",
+            "d07db6ba-2cb6-4dee-9d74-304a64831a42",
+            "23d479fc-3ff6-4bdf-9109-19f173920f3d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1053,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
