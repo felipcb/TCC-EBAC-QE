@@ -4,12 +4,11 @@
   "main": "index.js",
 
   "scripts": {
-  "test:web": "cross-env CYPRESS_ALLURE_RESULTS_DIR=allure-results npx cypress run",
-  "test:mobile": "npx wdio wdio.conf.js",
-  "allure:generate": "npx allure generate allure-results --clean -o allure-report",
-  "allure:open": "npx allure open allure-report",
-  "test:all": "npm run test:web && npm run test:mobile && npm run allure:generate && npm run allure:open"
-}
+    "test:web": "cross-env CYPRESS_ALLURE_RESULTS_DIR=allure-results npx cypress run",
+    "test:mobile": "npx wdio wdio.conf.js",
+    "test:mobile:local": "npm run test:mobile && allure generate allure-results --clean -o allure-report-mobile",
+    "test:mobile:report": "allure generate allure-results --clean -o allure-report-mobile"
+  }
 ,
   "keywords": [],
   "author": "",

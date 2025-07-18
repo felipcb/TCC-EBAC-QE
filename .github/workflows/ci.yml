@@ -5,67 +5,57 @@ on:
     branches:
       - ci
   pull_request:
-    branches:
-      - ci
 
 jobs:
-  web-tests:
+  # Job para rodar Cypress (Web)
+  test-web:
     name: Testes Web (Cypress)
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout do repositório
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Instalar Node.js
-        uses: actions/setup-node@v3
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 18
 
       - name: Instalar dependências
-        run: npm ci
+        run: npm install
 
-      - name: Rodar testes Cypress com Allure
+      - name: Rodar Testes Web com Allure
         run: npm run test:web
 
-      - name: Publicar resultados Allure (Web)
+      - name: Publicar Relatório Web
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-web
-          path: allure-results
+          name: allure-report-web
+          path: allure-report
 
-  mobile-tests:
-    name: Testes Mobile
+  # Job para publicar apenas o relatório Mobile (não roda Appium no CI)
+  publish-mobile-report:
+    name: Publicar Relatório Mobile
     runs-on: ubuntu-latest
-    services:
-      appium:
-        image: appium/appium
-        ports:
-          - 4723:4723
+    needs: test-web  # só roda após os testes Web
+
     steps:
       - name: Checkout do repositório
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Instalar Node.js
-        uses: actions/setup-node@v3
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 18
 
-      - name: Instalar dependências
-        run: npm ci
+      - name: Instalar Allure CLI
+        run: npm install -g allure-commandline
 
-      - name: Iniciar Emulador Android e Rodar Testes
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: google_apis_playstore
-          arch: x86_64
-          profile: pixel_4
-          emulator-options: -no-snapshot -no-window -noaudio -no-boot-anim -gpu swiftshader_indirect
-          disable-animations: true
-          script: npm run test:mobile
+      - name: Gerar Relatório Mobile (somente a partir dos resultados)
+        run: npm run test:mobile:report
 
-      - name: Publicar resultados Allure (Mobile)
+      - name: Publicar Relatório Mobile
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-mobile
-          path: allure-results
+          name: allure-report-mobile
+          path: allure-report-mobile
