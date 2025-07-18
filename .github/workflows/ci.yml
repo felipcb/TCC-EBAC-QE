@@ -1,0 +1,63 @@
+name: CI - Web e Mobile Tests
+
+on:
+  push:
+    branches:
+      - ci
+  pull_request:
+    branches:
+      - ci
+
+jobs:
+  web-tests:
+    name: Testes Web (Cypress)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar testes Cypress com Allure
+        run: npm run test:web
+
+      - name: Publicar resultados Allure (Web)
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results-web
+          path: allure-results
+
+  mobile-tests:
+    name: Testes Mobile
+    runs-on: ubuntu-latest
+    services:
+      appium:
+        image: appium/appium
+        ports:
+          - 4723:4723
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar testes Mobile com Allure
+        run: npm run testMobile
+
+      - name: Publicar resultados Allure (Mobile)
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results-mobile
+          path: allure-results
