@@ -56,11 +56,11 @@ jobs:
       - name: Iniciar Emulador Android e Rodar Testes
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 34
-          target: google_apis
+          api-level: 30
+          target: google_apis_playstore
           arch: x86_64
-          profile: pixel_8
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          profile: pixel_4
+          emulator-options: -no-snapshot -no-window -noaudio -no-boot-anim -gpu swiftshader_indirect
           disable-animations: true
           script: npm run test:mobile
 
