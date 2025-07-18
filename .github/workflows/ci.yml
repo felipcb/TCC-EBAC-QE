@@ -54,7 +54,7 @@ jobs:
         run: npm ci
 
       - name: Rodar testes Mobile com Allure
-        run: npm run testMobile
+        run: npm run test:mobile
 
       - name: Publicar resultados Allure (Mobile)
         uses: actions/upload-artifact@v4
